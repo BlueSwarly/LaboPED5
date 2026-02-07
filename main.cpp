@@ -53,12 +53,13 @@ Estudiante *insertar(Estudiante *raiz, int carnet, char nombre[], float nota)
 // 2. Mostrar todos los estudiantes en orden de carnet
 void mostrarEstudiantes(Estudiante *raiz)
 {
-    if (raiz != nullptr)
-    {
-        inorden(raiz->izq);
-        cout << raiz->dato << " ";
-        inorden(raiz->der);
-    }
+    if (raiz != nullptr) { 
+        mostrarEstudiantes(raiz->izquierdo); //recorrer subárbol izquierdo 
+        cout << "Carnet: " << raiz->carnet << endl;
+        cout << "Nombre: " << raiz->nombre << endl;
+        cout << "Nota: " << raiz->nota << endl; mostrarEstudiantes(raiz->derecho); 
+        // recorrer subárbol derecho 
+        }
 }
 // 3. Buscar un estudiante por carnet y mostrar sus datos
 void buscarEstudiante(Estudiante *raiz, int carnet)
@@ -109,21 +110,19 @@ int main()
         switch (opcion)
         {
         case 1:
-            int carnet;
-            char nombre[50];
-            float nota;
+            int carnet; 
+            char nombre[50]; 
+            float nota; 
 
-            cout << "Carnet: ";
-            cin >> carnet;
-
-            cin.ignore();
-            cout << "Nombre: ";
-            getline(cin >> ws, nombre, 50);
-
-            cout << "Nota: ";
-            cin >> nota;
-
+            cout << "Ingrese carnet: "; 
+            cin >> carnet; 
+            cout << "Ingrese nombre: "; 
+            cin.ignore(); 
+            cin.getline(nombre, 50); 
+            cout << "Ingrese nota: "; 
+            cin >> nota; 
             sistema = insertar(sistema, carnet, nombre, nota);
+            
             break;
         case 2:
             mostrarEstudiantes(sistema);
@@ -144,7 +143,6 @@ int main()
             break;
         default:
             cout << "La opcion marcada no es valida, vuelva a intentar. " << endl;
-            return;
             break;
         }
 
