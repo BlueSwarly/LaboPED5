@@ -109,7 +109,17 @@ int main()
         switch (opcion)
         {
         case 1:
+            int carnet;
+            string nombre;
+            float nota;
 
+            cout << "Carnet: ";
+            cin >> carnet;
+            cout << "Nombre: ";
+            getline(cin >> ws, nombre);
+            cout << "Nota: ";
+            cin >> nota;
+            sistema = insertar(sistema, carnet, nombre, nota);
             break;
         case 2:
             mostrarEstudiantes(sistema);
