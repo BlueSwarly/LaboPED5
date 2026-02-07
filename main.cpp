@@ -110,15 +110,19 @@ int main()
         {
         case 1:
             int carnet;
-            string nombre;
+            char nombre[50];
             float nota;
 
             cout << "Carnet: ";
             cin >> carnet;
+
+            cin.ignore();
             cout << "Nombre: ";
-            getline(cin >> ws, nombre);
+            getline(cin >> ws, nombre, 50);
+
             cout << "Nota: ";
             cin >> nota;
+
             sistema = insertar(sistema, carnet, nombre, nota);
             break;
         case 2:
